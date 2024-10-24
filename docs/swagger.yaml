@@ -1,0 +1,43 @@
+basePath: /
+definitions:
+  main.Error:
+    properties:
+      error:
+        type: string
+    type: object
+  main.Random:
+    properties:
+      value:
+        type: integer
+    type: object
+info:
+  contact: {}
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /random/{max}:
+    get:
+      consumes:
+      - application/json
+      description: Random number by Max
+      parameters:
+      - description: Max
+        in: path
+        name: max
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Random'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/main.Error'
+      summary: Random Number
+      tags:
+      - number
+swagger: "2.0"
